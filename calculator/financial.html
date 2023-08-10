@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financial Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #292b2c;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .calculator {
+    background-color: #343a40;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+    text-align: left;
+  }
+  input {
+    padding: 10px;
+    margin: 5px 0;
+    width: 93%;
+    background-color: #464d53;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  h1, h2 {
+    color: #3498db;
+  }
+  .developer{
+    margin-top: 10px;
+    font-size: 12px;
+    color: #888;
+  }
+
+   .emoji-image {
+    width: 13px; /* Adjust this value to your preferred width */
+    height: 13px; /* Maintain the aspect ratio */
+    vertical-align: middle;
+  }
+
+
+
+
+</style>
+</head>
+<body>
+  <div class="calculator">
+    <h1>Financial Calculator</h1>
+    <form id="financialForm">
+      <label for="calculationType">Calculation Type:</label>
+      <select id="calculationType" name="calculationType">
+        <option value="futureValue">Future Value (FV)</option>
+        <option value="periodicPayment">Periodic Payment (PMT)</option>
+        <option value="interestRate">Interest Rate (I/Y)</option>
+        <option value="numCompoundingPeriods">Number of Compounding Periods (N)</option>
+        <option value="presentValue">Present Value (PV)</option>
+      </select>
+
+      <label for="principal">Principal (₹):</label>
+      <input type="number" id="principal" name="principal">
+
+      <label for="interestRate">Interest Rate (%):</label>
+      <input type="number" id="interestRate" name="interestRate">
+
+      <label for="loanTerm">Loan Term (years):</label>
+      <input type="number" id="loanTerm" name="loanTerm">
+
+      <button type="button" id="calculateButton">Calculate</button>
+    </form>
+    <h2>Results:</h2>
+    <p id="financialResult"></p>
+    <div class="developer">Designed By Akshay Sharma</div>
+    <div class="developer">With Peace <img src="white_bird.png" class="emoji-image">
+    
+
+  </div>
+
+
+
+
+
+  <script>
+    document.getElementById("calculateButton").addEventListener("click", function() {
+      const calculationType = document.getElementById("calculationType").value;
+      const principal = parseFloat(document.getElementById("principal").value);
+      const interestRate = parseFloat(document.getElementById("interestRate").value) / 100;
+      const loanTerm = parseFloat(document.getElementById("loanTerm").value);
+
+      if (calculationType && principal && (interestRate || calculationType === "interestRate") && (loanTerm || calculationType === "numCompoundingPeriods")) {
+        let resultText = "";
+
+        switch (calculationType) {
+          case "futureValue":
+            const futureValue = principal * Math.pow(1 + interestRate, loanTerm);
+            resultText = `Future Value (FV): ₹${futureValue.toFixed(2)}`;
+            break;
+          case "periodicPayment":
+            const periodicPayment = (principal * interestRate) / (1 - Math.pow(1 + interestRate, -loanTerm));
+            resultText = `Periodic Payment (PMT): ₹${periodicPayment.toFixed(2)}`;
+            break;
+          case "interestRate":
+            const interestRateCalc = Math.pow((principal / loanTerm), (1 / loanTerm)) - 1;
+            resultText = `Interest Rate (I/Y): ₹${(interestRateCalc * 100).toFixed(2)}%`;
+            break;
+          case "numCompoundingPeriods":
+            const numCompoundingPeriods = Math.log(interestRate + 1) / Math.log(principal);
+            resultText = `Number of Compounding Periods (N): ${numCompoundingPeriods.toFixed(2)}`;
+            break;
+          case "presentValue":
+            const presentValue = principal / Math.pow(1 + interestRate, loanTerm);
+            resultText = `Present Value (PV): ₹${presentValue.toFixed(2)}`;
+            break;
+        }
+
+        document.getElementById("financialResult").innerHTML = resultText;
+      } else {
+        document.getElementById("financialResult").innerHTML = "Please fill in all the required fields.";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+   
+ body {
+  margin: 1;
+  display: grid;
+  justify-content: center;
+  gap: 6px;
+  align-items: center;
+  background-color: #333;
+}
+
+.calculator {
+  display: grid;
+  background-color: #222;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0,0.3);
+  width: 400px;
+}
+
+.modes {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.mode-btn {
+  background-color: #deb887;
+  color: #00000;
+  border: none;
+  padding: 10px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+}
+
+.mode-btn:hover {
+  background-color: #555;
+}
+
+
+ .button {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  background-color: #222
+
+  
+}
+
+.button {
+  border: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  
+  font-size: 18px;
+  
+}
+
+.button:hover {
+  background-color: none;
+}
+
+
+.developer {
+    margin-top: 5px;
+    font-size: 12px;
+    color: #fff;
+    text-align: center;
+}
+.head {
+  margin-bottom: 15px;
+  color: #eee8aa;
+  text-align: center;
+  font-size: 16px;
+}
+
+  .emoji-image {
+    width: 13px; /* Adjust this value to your preferred width */
+    height: 13px; /* Maintain the aspect ratio */
+    vertical-align: middle;
+  }
+
+  
+</style>
+
+
+  <title>Web Calculator</title>
+</head>
+<body>    
+
+      <!-- FIRST CLASS BUTTONS -->
+    
+  <div class="calculator">
+   <div>
+      <div class="head">CHOSE THE CALCULATOR FROM BELOW</div>
+   </div>
+    <div class="button">
+      <button class="mode-btn" id="basic">Basic</button>
+      <button class="mode-btn" id="scientific">Scientific</button>
+      <button class="mode-btn" id="bmi">BMI</button>
+      <button class="mode-btn" id="calorie">Calorie</button>                
+      <button class="mode-btn" id="mortgage">Mortgage</button> 
+      <button class="mode-btn" id="financial">Financial</button>      
+      <button class="mode-btn" id="date">Date</button> 
+      <button class="mode-btn" id="stat">Statistical</button>
+      <button class="mode-btn" id="matrix">Matrix</button>
+    </div>
+  
+    <div>
+      <div class="developer">Note:The Above options are for different types of calculator</div>
+    
+     </div>
+     
+    </div>     
+  </div>
+
+<body>
+
+      <!-- SECOND CLASS BUTTONS -->
+    
+  <div class="calculator">
+   <div>
+      <div class="head">CONVERTORS</div>
+   </div>
+
+    <div class="button">
+      <button class="mode-btn" id="currency">Currency</button>
+      <button class="mode-btn" id="Temp">Temperature</button>
+      <button class="mode-btn" id="len">Length</button>
+      <button class="mode-btn" id="area">Area</button>
+      <button class="mode-btn" id="weight">Weight</button>
+      <button class="mode-btn" id="speed">Speed</button>
+      <button class="mode-btn" id="press">Pressure</button>
+      <button class="mode-btn" id="power">Power</button>
+      <button class="mode-btn" id="vol">Volume</button>
+      <button class="mode-btn" id="num">Number System</button>
+      <button class="mode-btn" id="freq">Frequency</button>
+      <button class="mode-btn" id="data">Data Storage</button>
+
+
+
+
+    </div>
+  
+
+
+    <div>
+      <div class="developer">Developed By Akshay Sharma</div>
+      <div class="developer">With Peace <img src="white_bird.png" class="emoji-image">  
+   </div>
+
+    </div>
+   
+    </div>
+  </div>
+
+<script>
+
+//FOR BASIC KEYBOARD
+const basicButton = document.getElementById('basic');
+basicButton.addEventListener('click', () => {
+  window.location.href = 'calculator/basic.html';
+});
+
+//FOR SCIENTIFIC KEYBOARD
+const scientificButton = document.getElementById('scientific');
+scientificButton.addEventListener('click', () => {
+  window.location.href = 'calculator/scientific.html';
+});
+
+//FOR BMI CALCULATOR
+const bmiButton = document.getElementById('bmi');
+bmiButton.addEventListener('click', () => {
+  window.location.href = 'calculator/bmi.html';
+});
+
+//FOR CALORIE CALCULATOR
+const calorieButton = document.getElementById('calorie');
+calorieButton.addEventListener('click', () => {
+  window.location.href = 'calculator/calorie.html';
+});
+
+//FOR MORTGAGE CALCULATOR
+const mortgageButton = document.getElementById('mortgage');
+mortgageButton.addEventListener('click', () => {
+  window.location.href = 'calculator/mortgage.html';
+});
+
+//FOR FINANCE CALCULATOR
+const financialButton = document.getElementById('financial');
+financialButton.addEventListener('click', () => {
+  window.location.href = 'calculator/financial.html';
+});
+
+//FOR DATE CALCULATOR
+const dateButton = document.getElementById('date');
+dateButton.addEventListener('click', () => {
+  window.location.href ='calculator/date.html';
+});
+
+//FOR STATISTIC CALCULATOR
+const statButton = document.getElementById('stat');
+statButton.addEventListener('click', () => {
+  window.location.href ='calculator/statistcal.html';
+});
+
+ </script>
+</body>
+</html>

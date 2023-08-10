@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Date Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #292b2c;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .calculator {
+    background-color: #343a40;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+    text-align: left;
+  }
+  input {
+    padding: 10px;
+    margin: 5px 0;
+    width: 93%;
+    background-color: #464d53;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  h1, h2 {
+    color: #3498db;
+  }
+  .developer{
+    margin-top: 10px;
+    font-size: 12px;
+    color: #888;
+  }
+
+   .emoji-image {
+    width: 13px; /* Adjust this value to your preferred width */
+    height: 13px; /* Maintain the aspect ratio */
+    vertical-align: middle;
+  }
+</style>
+
+</style>
+
+
+
+
+
+</head>
+<body>
+  <div class="calculator">
+    <h1>Date Calculator</h1>
+    <form id="dateForm">
+      <label for="startDate">Start Date:</label>
+      <input type="date" id="startDate" name="startDate" required>
+
+      <label for="endDate">End Date:</label>
+      <input type="date" id="endDate" name="endDate" required>
+
+      <label for="calculationType">Calculation Type:</label>
+      <select id="calculationType" name="calculationType">
+        <option value="difference">Difference</option>
+        <option value="addition">Addition</option>
+        <option value="subtraction">Subtraction</option>
+      </select>
+
+      <button type="button" id="calculateButton">Calculate</button>
+    </form>
+    <h2>Results:</h2>
+    <p id="dateResult"></p>
+    <div class="developer">Designed By Akshay Sharma</div>
+    <div class="developer">With Peace <img src="white_bird.png" class="emoji-image">
+
+  </div>
+
+
+
+
+
+  <script>
+    document.getElementById("calculateButton").addEventListener("click", function() {
+      const startDate = new Date(document.getElementById("startDate").value);
+      const endDate = new Date(document.getElementById("endDate").value);
+      const calculationType = document.getElementById("calculationType").value;
+
+      if (startDate && endDate) {
+        if (calculationType === "difference") {
+          const timeDifference = Math.abs(endDate.getTime() - startDate.getTime());
+          const daysDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+          const yearsDifference = Math.floor(daysDifference / 365);
+          const monthsDifference = Math.floor(daysDifference / 30);
+          const weeksDifference = Math.floor(daysDifference / 7);
+
+          const resultText = `
+            Years: ${yearsDifference} years<br>
+            Months: ${monthsDifference} months<br>
+            Weeks: ${weeksDifference} weeks<br>
+            Days: ${daysDifference} days
+          `;
+          document.getElementById("dateResult").innerHTML = resultText;
+        } else if (calculationType === "addition") {
+          const addedDate = new Date(startDate.getTime() + endDate.getTime() - new Date(0).getTime());
+
+          const resultText = `
+            Added Date: ${addedDate.toDateString()}
+          `;
+          document.getElementById("dateResult").innerHTML = resultText;
+        } else if (calculationType === "subtraction") {
+          const subtractedDate = new Date(startDate.getTime() - endDate.getTime() + new Date(0).getTime());
+
+          const resultText = `
+            Subtracted Date: ${subtractedDate.toDateString()}
+          `;
+          document.getElementById("dateResult").innerHTML = resultText;
+        }
+      } else {
+        document.getElementById("dateResult").innerHTML = "Please select both start and end dates.";
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMI Calculator</title>
+
+<!--   ###################  SCRIPT SECTION   ############################# -->
+
+
+
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #292b2c;
+    color: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  .calculator {
+    background-color: #343a40;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #fff;
+    text-align: left;
+  }
+  input, select {
+    padding: 12px;
+    margin: 5px 0;
+    width: 90%;
+    background-color: #464d53;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+  }
+  button {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+  }
+  h1, h2 {
+    color: #3498db;
+  }
+   .developer{
+    margin-top: 10px;
+    font-size: 12px;
+    color: #888;
+  }
+
+   .emoji-image {
+    width: 13px; /* Adjust this value to your preferred width */
+    height: 13px; /* Maintain the aspect ratio */
+    vertical-align: middle;
+  }
+
+</style>
+
+
+
+<!--   ###################  SCRIPT SECTION   ############################# -->
+
+
+
+
+
+</head>
+<body>
+  <div class="calculator">
+    <h1>BMI Calculator</h1>
+    <form id="bmiForm">
+
+       <label for="gender">Gender:</label>
+      <select id="gender" name="gender">
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <label for="age">Age:</label>
+      <input type="number" id="age" name="age" required>
+
+      <label for="height">Height (cm):</label>
+      <input type="number" id="height" name="height" required>
+
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" name="weight" required>
+
+      <button type="button" id="calculateButton">Calculate BMI</button>
+    </form>
+    <h2>Your BMI Result:</h2>
+    <p id="bmiResult"></p>
+  
+  <div class="developer">Designed By Akshay Sharma</div>
+  <div class="developer">With Peace <img src="white_bird.png" class="emoji-image"> 
+
+ 
+</div>
+
+   
+<!--   ###################  SCRIPT SECTION   ############################# -->
+
+
+
+  <script>
+    document.getElementById("calculateButton").addEventListener("click", function() {
+      const age = parseFloat(document.getElementById("age").value);
+      const gender = document.getElementById("gender").value;
+      const height = parseFloat(document.getElementById("height").value);
+      const weight = parseFloat(document.getElementById("weight").value);
+
+      if (age && height && weight) {
+        const bmi = weight / ((height / 100) ** 2);
+        const bmiResult = `Your BMI: ${bmi.toFixed(2)}<br>`;
+        
+        let interpretation = '';
+        if (bmi < 18.5) {
+          interpretation = "Underweight";
+        } else if (bmi >= 18.5 && bmi < 25) {
+          interpretation = "Normal Weight";
+        } else if (bmi >= 25 && bmi < 30) {
+          interpretation = "Overweight";
+        } else {
+          interpretation = "Obese";
+        }
+        
+        interpretation = `Interpretation: ${interpretation}`;
+        document.getElementById("bmiResult").innerHTML = bmiResult + interpretation;
+      } else {
+        document.getElementById("bmiResult").innerHTML = "Please fill in all the fields.";
+      }
+    });
+  </script>
+</body>
+</html>
